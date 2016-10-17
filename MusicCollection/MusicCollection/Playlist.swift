@@ -48,9 +48,8 @@ class Playlist : Hashable {
     /// 遍历打印playlist中歌曲信息
     func displayPlaylistInfo() {
         print("\(playlistName):")
-        self.playlistContents.forEach { (song) in
-            song.displayInfo()
-        }
+        //尾随闭包优化
+        self.playlistContents.forEach { $0.displayInfo() }
     }
 }
 
