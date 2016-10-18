@@ -36,9 +36,8 @@ class MusicCollection {
     
     /// 显示MusicCollection信息
     func displayMusicCollectionInfo() {
-        self.musicCollection.forEach { (playlist) in
-            playlist.displayPlaylistInfo()
-        }
+        //尾随闭包优化
+        self.musicCollection.forEach { $0.displayPlaylistInfo() }
     }
     
     /// 往目标播放列表中添加目标歌曲
@@ -55,8 +54,7 @@ class MusicCollection {
     /// 遍历所有playlist，调用removeSong方法
     /// - parameter song: 目标歌曲
     func removeFromLibrary(song: Song) {
-        self.musicCollection.forEach { (playlist) in
-            playlist.removeSong(song: song)
-        }
+        //尾随闭包优化
+        self.musicCollection.forEach { $0.removeSong(song: song) }
     }
 }
