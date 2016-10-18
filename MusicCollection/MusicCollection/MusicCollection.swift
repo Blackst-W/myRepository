@@ -17,27 +17,27 @@ class MusicCollection {
     /// 将library实例化并添加到musicCollection
     init() {
         self.library = Playlist(playlistName: "library")
-        self.musicCollection = [library]
+        musicCollection = [library]
     }
     
     /// 添加播放列表
     ///
     /// - parameter playlist: 目标播放列表
     func addPlaylist(playlist: Playlist) {
-        self.musicCollection.insert(playlist)
+        musicCollection.insert(playlist)
     }
     
     /// 删除播放列表
     ///
     /// - parameter playlist: 目标播放列表
     func removePlaylist(playlist: Playlist) {
-        self.musicCollection.remove(playlist)
+        musicCollection.remove(playlist)
     }
     
     /// 显示MusicCollection信息
     func displayMusicCollectionInfo() {
         //尾随闭包优化
-        self.musicCollection.forEach { $0.displayPlaylistInfo() }
+        musicCollection.forEach { $0.displayPlaylistInfo() }
     }
     
     /// 往目标播放列表中添加目标歌曲
@@ -55,6 +55,6 @@ class MusicCollection {
     /// - parameter song: 目标歌曲
     func removeFromLibrary(song: Song) {
         //尾随闭包优化
-        self.musicCollection.forEach { $0.removeSong(song: song) }
+        musicCollection.forEach { $0.removeSong(song: song) }
     }
 }
