@@ -14,6 +14,7 @@ func ==(lhs: Song, rhs: Song) -> Bool {
 }
 
 class Song : Hashable {
+    var delegateArray: [PlaylistProtocol]
     var name: String = ""
     var artist: String = ""
     var album: String = ""
@@ -33,16 +34,24 @@ class Song : Hashable {
     /// - parameter album:    歌曲专辑
     /// - parameter composer: 歌曲作曲者
     /// - parameter duration: 歌曲时长，单位s
+    /// - parameter delegate: 播放列表索引
     init(name: String, artist: String, album: String, composer: String, duration: Int32) {
         self.name = name
         self.artist = artist
         self.album = album
         self.composer = composer
         self.duration = duration
+        delegateArray = []
     }
     
     /// 打印歌曲相关信息
     func displayInfo() {
         print("Name:\(name) Artist:\(artist) Album:\(album) Composer:\(composer) Duration:\(duration)s")
+    }
+    
+    func removeSelfFromLibrary() {
+        for delegate in delegateArray {
+            delegate.removeSong(song: self)
+        }
     }
 }

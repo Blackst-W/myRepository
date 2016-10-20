@@ -8,15 +8,15 @@
 
 import Foundation
 
-class MusicCollection {
-    
-    private var library:Playlist  //创建私有library列表
+class MusicCollection : MusicCollectionProtocol {
     var musicCollection = Set<Playlist>()
-    
+    lazy var library : Playlist = {
+        [unowned self] in
+        return Playlist(playlistName: "library", delegate: self)
+    }()
     /// 初始化
     /// 将library实例化并添加到musicCollection
     init() {
-        self.library = Playlist(playlistName: "library")
         musicCollection = [library]
     }
     
@@ -24,14 +24,42 @@ class MusicCollection {
     ///
     /// - parameter playlist: 目标播放列表
     func addPlaylist(playlist: Playlist) {
-        musicCollection.insert(playlist)
+        if musicCollection.contains(playlist) {
+            print("Playlist existed! Please try another name.")
+        }
+        else {
+            musicCollection.insert(playlist)
+        }
     }
     
     /// 删除播放列表
     ///
     /// - parameter playlist: 目标播放列表
     func removePlaylist(playlist: Playlist) {
-        musicCollection.remove(playlist)
+        if playlist.playlistName != "library" {
+            musicCollection.remove(playlist)
+        }
+        else {
+            print("Playlist 'library' can't be removed!")
+        }
+    }
+    
+    /// 批量添加playlist
+    ///
+    /// - parameter playlistSet: playlist集合
+    func addPlaylistSet(playlistSet:Set<Playlist>) {
+        for playlist in playlistSet {
+            addPlaylist(playlist: playlist)
+        }
+    }
+    
+    /// 批量删除playlist
+    ///
+    /// - parameter playlistSet: playlist集合
+    func removePlaylistSet(playlistSet:Set<Playlist>) {
+        for playlist in playlistSet {
+            removePlaylist(playlist: playlist)
+        }
     }
     
     /// 显示MusicCollection信息
@@ -40,21 +68,18 @@ class MusicCollection {
         musicCollection.forEach { $0.displayPlaylistInfo() }
     }
     
-    /// 往目标播放列表中添加目标歌曲
-    ///
-    /// - parameter song:     目标歌曲
-    /// - parameter playlist: 目标播放列表
-    func addSong(song: Song,playlist: Playlist) {
-        //先添加到library
-        library.addSong(song: song)
-        playlist.addSong(song: song)
+    func addToLibrary(song: Song) {
+        library.playlistContents.insert(song)
+        song.delegateArray.append(library)
     }
     
-    /// 删除library中的目标歌曲
-    /// 遍历所有playlist，调用removeSong方法
-    /// - parameter song: 目标歌曲
     func removeFromLibrary(song: Song) {
-        //尾随闭包优化
-        musicCollection.forEach { $0.removeSong(song: song) }
+        for playlist in musicCollection {
+            playlist.removeSong(song: song)
+        }
     }
+}
+
+protocol MusicCollectionProtocol : class{
+    func addToLibrary(song: Song)
 }

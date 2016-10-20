@@ -11,7 +11,6 @@
 		9658A0771DB3B723009D6192 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9658A0761DB3B723009D6192 /* Song.swift */; };
 		9658A0791DB3B74F009D6192 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9658A0781DB3B74F009D6192 /* Playlist.swift */; };
 		9658A07B1DB3B792009D6192 /* MusicCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9658A07A1DB3B792009D6192 /* MusicCollection.swift */; };
-		9658A07F1DB3B82B009D6192 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9658A07E1DB3B82B009D6192 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,7 +31,6 @@
 		9658A0761DB3B723009D6192 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		9658A0781DB3B74F009D6192 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		9658A07A1DB3B792009D6192 /* MusicCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicCollection.swift; sourceTree = "<group>"; };
-		9658A07E1DB3B82B009D6192 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +47,6 @@
 		9658A0631DB3B6CA009D6192 = {
 			isa = PBXGroup;
 			children = (
-				9658A07E1DB3B82B009D6192 /* README.md */,
 				9658A06E1DB3B6CA009D6192 /* MusicCollection */,
 				9658A06D1DB3B6CA009D6192 /* Products */,
 			);
@@ -134,7 +131,6 @@
 			files = (
 				9658A0771DB3B723009D6192 /* Song.swift in Sources */,
 				9658A07B1DB3B792009D6192 /* MusicCollection.swift in Sources */,
-				9658A07F1DB3B82B009D6192 /* README.md in Sources */,
 				9658A0701DB3B6CA009D6192 /* main.swift in Sources */,
 				9658A0791DB3B74F009D6192 /* Playlist.swift in Sources */,
 			);
@@ -266,6 +262,7 @@
 				9658A0751DB3B6CA009D6192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
