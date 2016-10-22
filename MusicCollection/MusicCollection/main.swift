@@ -20,9 +20,11 @@ let songSet : Set = [mySong1,mySong2,mySong3]
 let playlistSet : Set = [myPlaylist1,myPlaylist2,myPlaylist3]
 
 masterCollection.addPlaylist(playlist: myPlaylist1)
-myPlaylist1.addSong(song: mySong1)
-myPlaylist1.addSong(song: mySong2)
-myPlaylist1.addSong(song: mySong3)
+
+myPlaylist1.addSongSet(songSet: songSet)
+//myPlaylist1.addSong(song: mySong1)
+//myPlaylist1.addSong(song: mySong2)
+//myPlaylist1.addSong(song: mySong3)
 
 mySong1.displayInfo()
 mySong1.removeSelfFromLibrary()

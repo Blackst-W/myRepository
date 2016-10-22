@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol PlaylistProtocol : class{
+    func removeSong(song: Song)
+}
+
 //equatable化
 func ==(lhs: Playlist, rhs: Playlist) -> Bool {
     return lhs.hashValue == rhs.hashValue
@@ -47,6 +51,7 @@ class Playlist : Hashable, PlaylistProtocol {
     func removeSong(song:Song) {
         if playlistContents.contains(song) {
             playlistContents.remove(song)
+            //这里要把song的delegateArray中的自己删掉
         }
     }
     
@@ -77,6 +82,3 @@ class Playlist : Hashable, PlaylistProtocol {
     
 }
 
-protocol PlaylistProtocol : class{
-    func removeSong(song: Song)
-}

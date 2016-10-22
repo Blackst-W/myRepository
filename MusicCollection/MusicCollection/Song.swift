@@ -53,5 +53,6 @@ class Song : Hashable {
         for delegate in delegateArray {
             delegate.removeSong(song: self)
         }
+        //记得要在最后清空delegateArray数组，否则会出现内存泄漏
     }
 }
